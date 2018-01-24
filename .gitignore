@@ -5,6 +5,7 @@
 /out/
 /gradle/
 *.iml
+/src/generated/resources/git.properties
 
 # Ignore Gradle GUI config
 gradle-app.setting
