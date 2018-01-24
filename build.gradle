@@ -38,20 +38,25 @@ buildDir = 'target'
 sourceCompatibility = 1.8
 
 ext {
-	springVersion = '5.0.3.RELEASE'
+    slf4jVersion = '1.7.25'
+    lombokVersion = '1.16.20'
+    springVersion = '5.0.3.RELEASE'
     commonsLangVersion = '3.7'
     jacksonDatatypeJsr310Version = '2.9.3'
-	slf4jVersion = '1.7.25'
-    assertjVersion = '3.9.0'
     logbackVersion = '1.2.3'
-    lombokVersion = '1.16.20'
-    checkstyleVersion = '7.8.2'
+
+    junitVersion = '4.12'
+    mockitoVersion = '1.10.19'
+    assertjVersion = '3.9.0'
+    jsonassertVersion = '1.5.0'
+
+    checkstyleVersion = '8.7'
     pmdVersion= '5.5.2'
     findbugsVersion = '3.0.1'
     jacocoVersion = '0.7.9'
 
     buildDate = new SimpleDateFormat("dd.MM.yyyy HH:mm").format(new Date())
-    gitRepositoryUrl = 'https://github.com/riy/hetzner-cloud-api.git'
+    gitRepositoryUrl = 'https://github.com/riy/hcloud-java.git'
     configDir = "${project.projectDir}/etc/config"
 }
 
@@ -76,12 +81,12 @@ dependencies {
     compile "ch.qos.logback:logback-core:${logbackVersion}"
     compile "ch.qos.logback:logback-classic:${logbackVersion}"
 
-    testCompile 'junit:junit:4.12'
+    testCompile "junit:junit:${junitVersion}"
+    testCompile "org.mockito:mockito-core:${mockitoVersion}"
     testCompile "ch.qos.logback:logback-core:${logbackVersion}"
     testCompile "ch.qos.logback:logback-classic:${logbackVersion}"
     testCompile "org.assertj:assertj-core:${assertjVersion}"
-    testCompile 'junit:junit:4.12'
-    testCompile "org.skyscreamer:jsonassert:1.5.0"
+    testCompile "org.skyscreamer:jsonassert:${jsonassertVersion}"
     testCompile "org.projectlombok:lombok:${lombokVersion}"
 
     checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
@@ -114,7 +119,7 @@ gitProperties {
 processGeneratedResources.dependsOn generateGitProperties
 
 jar {
-    baseName = 'hetzner-cloud-api'
+    baseName = 'hcloud-java'
     from sourceSets.generated.output
 }
 
@@ -199,7 +204,7 @@ jacocoTestCoverageVerification {
     violationRules {
         rule {
             limit {
-                minimum = 1.0
+                minimum = 0.1 // Will be increased over time
             }
         }
     }
@@ -214,8 +219,12 @@ task coverage {
 spotless {
     // automatically format source files, see https://github.com/diffplug/spotless
     java {
-        importOrderFile rootProject.file("${project.configDir}/ide/hetzner-cloud-api.importorder")
+        importOrderFile rootProject.file("${project.configDir}/ide/hcloud-java.importorder")
         eclipse().configFile rootProject.file("${project.configDir}/ide/eclipse_formatter.xml")
         target 'src/main/**/*.java', 'src/test/**/*.java'
     }
+}
+
+test {
+    systemProperty 'token', System.getProperty('token')
 }

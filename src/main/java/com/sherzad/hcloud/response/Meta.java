@@ -1,3 +1,5 @@
+package com.sherzad.hcloud.response;
+
 import lombok.Getter;
 import lombok.Setter;
 
