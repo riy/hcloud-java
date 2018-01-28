@@ -6,7 +6,7 @@ This is version 0.1-SNAPSHOT and work in progress. Please feel free to submit pu
 
 ### How to use
 
-Create a server instance in your Hetzner Cloud Console and name it `hcloud-java-testserver`. Get an API token, clone this repository and run `./gradlew build -Dtoken=<Your Hetzner Cloud API token>` in your shell to build the code and run the tests.
+Create a project in your Hetzner Cloud Console and name it `hcloud-java`. Get an API token from within the Cloud Console, clone this repository and run `./gradlew build -Dtoken=<Your Hetzner Cloud API token>` in your shell to build the code and run the tests.
 
 ### How to help
 

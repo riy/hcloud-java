@@ -6,11 +6,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Iso {
+public class Location {
 
     private Long id;
     private String name;
     private String description;
-    private String type;
-
+    private String country;
+    private String city;
+    private Double latitude;
+    private Double longitude;
 }

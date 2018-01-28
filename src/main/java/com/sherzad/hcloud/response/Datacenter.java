@@ -1,5 +1,9 @@
 package com.sherzad.hcloud.response;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,21 +11,19 @@ import lombok.Setter;
 @Setter
 public class Datacenter {
 
-    private Integer id;
+    private Long id;
     private String name;
     private String description;
     private Location location;
 
+    @JsonProperty("server_types")
+    private ServerTypes serverTypes;
+
     @Getter
     @Setter
-    public static class Location {
+    public static class ServerTypes {
 
-        private Integer id;
-        private String name;
-        private String description;
-        private String country;
-        private String city;
-        private Double latitude;
-        private Double longitude;
+        public List<Long> supported;
+        public List<Long> available;
     }
 }

@@ -2,19 +2,18 @@ package com.sherzad.hcloud.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * https://docs.hetzner.cloud/#resources-servers-get-1
+ * https://docs.hetzner.cloud/#resources-pricing-get
  */
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ServerResponse {
+public class PricingResponse {
 
-    private Server server;
-    private Action action; // Comes back for "Create Server"
-    private String rootPassword; // Comes back for "Create Server"
+    private Pricing pricing;
     private Error error;
 }

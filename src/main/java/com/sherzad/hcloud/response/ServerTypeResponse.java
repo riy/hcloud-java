@@ -6,15 +6,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * https://docs.hetzner.cloud/#resources-servers-get-1
+ * https://docs.hetzner.cloud/#resources-server-types-get-1
  */
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ServerResponse {
+public class ServerTypeResponse {
 
-    private Server server;
-    private Action action; // Comes back for "Create Server"
-    private String rootPassword; // Comes back for "Create Server"
+    private ServerType serverType;
     private Error error;
 }

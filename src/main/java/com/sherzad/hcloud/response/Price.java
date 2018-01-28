@@ -6,11 +6,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Iso {
+public class Price {
 
-    private Long id;
-    private String name;
-    private String description;
-    private String type;
-
+    private Double net;
+    private Double gross;
 }
