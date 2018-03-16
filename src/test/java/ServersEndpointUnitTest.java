@@ -19,6 +19,7 @@ import com.sherzad.hcloud.response.ServersResponse;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import lombok.extern.slf4j.Slf4j;
@@ -49,7 +50,6 @@ public class ServersEndpointUnitTest {
     public void shouldReturnServersWithFilter() {
         // given
         final HCloud hcloud = new HCloud(TOKEN);
-        // TODO Create a server
 
         // when
         final ServersResponse serversResponse = hcloud.getServers("hcloud-java-testserver");
@@ -63,7 +63,6 @@ public class ServersEndpointUnitTest {
     public void shouldReturnSpecificServer() {
         // given
         final HCloud hcloud = new HCloud(TOKEN);
-        // TODO Create a server
 
         // when
         final ServerResponse serverResponse = hcloud.getServer(1L);

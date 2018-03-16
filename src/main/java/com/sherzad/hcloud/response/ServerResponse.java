@@ -15,6 +15,6 @@ public class ServerResponse {
 
     private Server server;
     private Action action; // Comes back for "Create Server"
-    private String rootPassword; // Comes back for "Create Server"
+    private String rootPassword; // Comes back for "Create Server" and "Reset root Password of a Server"
     private Error error;
 }

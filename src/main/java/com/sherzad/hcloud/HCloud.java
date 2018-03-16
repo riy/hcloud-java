@@ -3,6 +3,8 @@ package com.sherzad.hcloud;
 import java.util.Collections;
 
 import com.sherzad.hcloud.request.ServerRequest;
+import com.sherzad.hcloud.response.Action;
+import com.sherzad.hcloud.response.ActionResponse;
 import com.sherzad.hcloud.response.DatacenterResponse;
 import com.sherzad.hcloud.response.DatacentersResponse;
 import com.sherzad.hcloud.response.IsoResponse;
@@ -86,6 +88,17 @@ public class HCloud {
         return restTemplate
                 .postForEntity(API_ENDPOINT + "/servers", new HttpEntity<>(serverRequest, httpHeaders), ServerResponse.class)
                 .getBody();
+    }
+
+
+    /**
+     * https://docs.hetzner.cloud/#resources-servers-delete
+     *
+     * @param id The ID of the server to delete.
+     * @return An object containing information about the deletion request.
+     */
+    public ActionResponse deleteServer(final Long id) {
+        return restTemplate.exchange(API_ENDPOINT + "/servers/" + id, HttpMethod.DELETE, entity, ActionResponse.class).getBody();
     }
 
     /**

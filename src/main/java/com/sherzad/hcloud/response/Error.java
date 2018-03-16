@@ -27,7 +27,9 @@ public class Error {
         RESOURCE_LIMIT_EXCEEDED("Error when exceeding the maximum quantity of a resource for an account"),
         RESOURCE_UNAVAILABLE("The requested resource is currently unavailable"),
         SERVICE_ERROR("Error within a service"),
-        UNIQUENESS_ERROR("One or more of the objects fields must be unique");
+        UNIQUENESS_ERROR("One or more of the objects fields must be unique"),
+        SERVER_NOT_STOPPED("The server was not powered off"),
+        INVALID_SERVER_TYPE("A change to the requested server type is not possible");
 
         private String description;
     }

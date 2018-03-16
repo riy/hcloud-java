@@ -2,8 +2,8 @@ package com.sherzad.hcloud.response;
 
 import java.time.ZonedDateTime;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +14,7 @@ public class Server {
 
     private Long id;
     private String name;
-    private String status;
+    private ServerStatus status;
     private ZonedDateTime created;
 
     @JsonProperty("public_net")
@@ -43,4 +43,21 @@ public class Server {
 
     @JsonProperty("included_traffic")
     private Long includedTraffic;
+
+    public enum ServerStatus {
+        INITIALIZING("initializing"),
+        STARTING("starting"),
+        RUNNING("running"),
+        STOPPING("stopping"),
+        OFF("off"),
+        DELETING("deleting"),
+        MIGRATING("migrating"),
+        REBUILDING("rebuilding");
+
+        private String description;
+
+        ServerStatus(String description) {
+            this.description = description;
+        }
+    }
 }

@@ -2,7 +2,8 @@ package com.sherzad.hcloud.response;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +21,8 @@ public class PublicNet {
 
         private String ip;
         private boolean blocked;
+
+        @JsonProperty("dns_ptr")
         private String dnsPtr;
     }
 
@@ -30,13 +33,5 @@ public class PublicNet {
         private String ip;
         private boolean blocked;
         private List<DnsPtr> dnsPtr;
-
-        @Getter
-        @Setter
-        public static class DnsPtr {
-
-            private String ip;
-            private String dnsPtr;
-        }
     }
 }

@@ -3,7 +3,6 @@ package com.sherzad.hcloud.response;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +12,7 @@ public class Action {
 
     private Long id;
     private String command;
-    private String status;
+    private ActionStatus status;
     private Long progress;
     private ZonedDateTime started;
     private ZonedDateTime finished;
@@ -26,5 +25,17 @@ public class Action {
 
         private Long id;
         private String type;
+    }
+
+    public enum ActionStatus {
+        RUNNING("running"),
+        SUCCESS("success"),
+        ERROR("error");
+
+        private String description;
+
+        ActionStatus(String description) {
+            this.description = description;
+        }
     }
 }

@@ -17,7 +17,7 @@ import lombok.Setter;
 
 public class ServerRequest {
 
-    private String name;
+    private String name; // The only attribute that should be set when changing a server's name
 
     @JsonProperty("server_type")
     private String serverType;

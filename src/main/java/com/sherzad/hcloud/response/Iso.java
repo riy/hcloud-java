@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.ZonedDateTime;
+
 @Getter
 @Setter
 public class Iso {
@@ -12,5 +14,6 @@ public class Iso {
     private String name;
     private String description;
     private String type;
+    private ZonedDateTime deprecated;
 
 }

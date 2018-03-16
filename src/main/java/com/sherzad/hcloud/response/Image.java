@@ -2,8 +2,8 @@ package com.sherzad.hcloud.response;
 
 import java.time.ZonedDateTime;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sherzad.hcloud.common.ImageType;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,8 +13,8 @@ import lombok.Setter;
 public class Image {
 
     private Long id;
-    private String type;
-    private String status;
+    private ImageType type;
+    private ImageStatus status;
     private String name;
     private String description;
 
@@ -32,7 +32,7 @@ public class Image {
     private Long boundTo;
 
     @JsonProperty("os_flavor")
-    private String osFlavor;
+    private OsFlavor osFlavor;
 
     @JsonProperty("os_version")
     private String osVersion;
@@ -47,4 +47,32 @@ public class Image {
         private Long id;
         private String name;
     }
+
+    public enum ImageStatus {
+        CREATING("creating"),
+        AVAILABLE("available");
+
+        private String description;
+
+        ImageStatus(String description) {
+            this.description = description;
+        }
+
+    }
+
+    public enum OsFlavor {
+        UBUNTU("ubuntu"),
+        CENTOS("centos"),
+        DEBIAN("debian"),
+        FEDORA("fedora"),
+        UNKNOWN("unknown");
+
+        private String description;
+
+        OsFlavor(String description) {
+            this.description = description;
+        }
+
+    }
+
 }
